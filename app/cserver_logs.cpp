@@ -18,12 +18,11 @@ void write_log_to_file(const char*file, const char* func, int line, const char* 
     ss << Tools::serializeDate('-') << ".log";
     fs.open(ss.str(), std::ios::app);
     if (!fs.is_open()) {
-        std::cout << "file not open" << std::endl;
         return ;
     }
     fs << "[" << Tools::serializeDateTime() << "]";
     fs << "[" << level << "]";
-    fs << "[" << "file:" << file << " " << func << "()" << ":" << line << "]";
+    fs << "[" << file << " " << func << "()" << " :" << line << "]";
     fs << "[" << buf << "]" << std::endl;
     fs.close();
 }

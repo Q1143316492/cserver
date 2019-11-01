@@ -2,7 +2,6 @@
 #define _CSERVER_CONF_H_
 
 #include <bits/stdc++.h>
-#include "cserver_global.h"
 #include "cserver_macro.h"
 #include "cserver_easy_tools.h"
 
