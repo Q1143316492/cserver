@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "cserver_conf.h"
 #include "cserver_global.h"
+#include "cserver_memery.h"
 #include "cserver_proc.h"
 
 static void test_base_func()
@@ -21,6 +22,13 @@ int main()
             break;
         }
 
+        // 内存池，暂未实现
+        g_memeryPools = CMemeryPools::getInstance();
+        if (g_memeryPools == nullptr) {
+            CORE_ERR_LOG("memery pools load fail");
+            break;
+        }
+
         // 使当前进程成为守护进程
         int ret_deamon = init_deamon();
         if (ret_deamon == 1) {
@@ -32,7 +40,7 @@ int main()
         }
         INFO_LOG("after init_deamon() pid = %d ppid = %d", getpid(), getppid());
 
-        
+
 
     } while (false);
 

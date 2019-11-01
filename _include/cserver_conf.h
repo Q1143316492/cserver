@@ -15,7 +15,7 @@ private:
     static std::mutex m_instance_mux;
     std::unordered_map<std::string, std::string> confkv;
 public:
-    static ServerConf* getInstance() {	
+    static ServerConf* getInstance() {
 		if(m_instance == NULL) {
             std::unique_lock<std::mutex> uni_lok(m_instance_mux);
 			if(m_instance == NULL) {					
