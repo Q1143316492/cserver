@@ -77,13 +77,13 @@ struct tm {
 }
 */
 
-tm getDateTime()
+tm Tools::getDateTime()
 {
     time_t now = time(0);
     return *localtime(&now);
 }
 
-std::string serializeDate(char split)
+std::string Tools::serializeDate(char split)
 {
     tm ltm = getDateTime();
     std::stringstream ss;
@@ -91,7 +91,7 @@ std::string serializeDate(char split)
     return ss.str();
 }
 
-std::string serializeDateTime()
+std::string Tools::serializeDateTime()
 {
     tm ltm = getDateTime();
     std::stringstream ss;

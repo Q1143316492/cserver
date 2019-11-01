@@ -6,7 +6,8 @@ int main()
 {
     do {
         ServerConf* serverConf = ServerConf::getInstance();
-        std::cout << serverConf->showAllConf() << std::endl;
+        // std::cout << serverConf->showAllConf() << std::endl;
+        DEBUG_LOG("test log");
 
     } while (false);
 
