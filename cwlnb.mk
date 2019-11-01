@@ -1,8 +1,8 @@
 ifeq ($(DEBUG),true)
-    CC = g++ -g
+    CC = g++ -g -lpthread -std=c++14
     VERSION = debug
 else
-    CC = g++
+    CC = g++ -g -lpthread -std=c++14
     VERSION = release
 endif
 
