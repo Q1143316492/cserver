@@ -3,12 +3,16 @@
 
 #include "cserver_func_base.h"
 
-// conf
+// 默认配置
 
-#define DEFAULT_CONFKV_PATH "conf/core.conf"
-#define MAX_CONF_LINE_SIZE  500
+#define DEFAULT_CONFKV_PATH     "conf/core.conf"
+#define MAX_CONF_LINE_SIZE      500
+#define ERROR_CONF_VALUE        0x7FFFFFFF
 
-// log
+// 配置文件配置项
+#define CHILD_PROCESS_NUMBER    "process_num"
+
+// 日志
 
 #define DEFAULT_LOG_PATH "logs/"
 #define MAX_LOG_MSG_SIZE 128
@@ -39,10 +43,11 @@
 #define SERVER_MASTER "cserver_master"
 #define SERVER_WORKER "cserver_worker"
 
-// process type master or worker
 #define PROC_TYPE_UNDEFINE  0
 #define MASTER_PROCESS      1
 #define WORKER_PROCESS      2
 
+#define MAX_CHILD_PROC_LIMIT 16
+#define MIN_CHILD_PROC_LIMIT 0
 
 #endif

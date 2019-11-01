@@ -2,8 +2,7 @@
 
 int init_deamon()
 {
-    switch (fork()) 
-    {
+    switch (fork()) {
     case -1:
         CORE_ERR_LOG("deamon init fork() fail");
         return -1;
@@ -14,35 +13,42 @@ int init_deamon()
         return 1;
     }
     INFO_LOG("init_deamon() pid = %d ppid = %d", getpid(), getppid());
-    if (setsid() == -1)  
-    {
+    if (setsid() == -1) {
         CORE_ERR_LOG("deamon init setsid() fail");
         return -1;
     }
     umask(0); 
     int fd = open("/dev/null", O_RDWR);
-    if (fd == -1) 
-    {
+    if (fd == -1) {
         CORE_ERR_LOG("deamon init open /dev/null fail");
         return -1;
     }
-    if (dup2(fd, STDIN_FILENO) == -1)
-    {
+    if (dup2(fd, STDIN_FILENO) == -1) {
         CORE_ERR_LOG("deamon init dup2(STDIN) fail");  
         return -1;
     }
-    if (dup2(fd, STDOUT_FILENO) == -1) 
-    {
+    if (dup2(fd, STDOUT_FILENO) == -1) {
         CORE_ERR_LOG("deamon init dup2(STDOUT) fail");
         return -1;
     }
-    if (fd > STDERR_FILENO)
-     {
-        if (close(fd) == -1)
-        {
+    if (fd > STDERR_FILENO) {
+        if (close(fd) == -1) {
             CORE_ERR_LOG("deamon init close(fd) fail");
             return -1;
         }
     }
     return 0;
+}
+
+void setproctitle(char *const *argv, const char *title) {
+    size_t titleLen = strlen(title);
+    size_t maxTitleLen = g_arg_len + g_env_len;
+    if (titleLen + 1 <= maxTitleLen) {
+        char *ptmp = argv[0];
+        strcpy(ptmp, title);
+        ptmp += titleLen;
+        memset(ptmp, 0, maxTitleLen - titleLen);
+    } else {
+        WARN_LOG("set process title fail");
+    }
 }

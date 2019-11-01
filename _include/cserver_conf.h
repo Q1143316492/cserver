@@ -31,6 +31,8 @@ public:
 
     std::string getStrConf(std::string key);
 
+    int getIntConf(std::string key);
+
 };
 
 #endif

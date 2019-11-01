@@ -2,8 +2,6 @@
 #define _CSERVER_MEMERY_H_
 
 #include <bits/stdc++.h>
-#include "cserver_macro.h"
-#include "cserver_easy_tools.h"
 
 class CMemeryPools {
 private:
@@ -24,14 +22,10 @@ public:
 		return m_instance;
 	}
 
-    // void* newMemery(int memCount, bool ifmemset);
+    void* newMemery(int memCount, bool ifmemset);
 	
-    // void  deleteMemery(void *point);
+    void  deleteMemery(void *point);
     
 };
-
-CMemeryPools* CMemeryPools::m_instance = nullptr;
-
-std::mutex CMemeryPools::m_instance_mux;
 
 #endif

@@ -65,3 +65,13 @@ std::string ServerConf::getStrConf(std::string key)
     }
     return "";
 }
+
+int ServerConf::getIntConf(std::string key)
+{
+    std::string strVal = this->getStrConf(key);
+    int iVal = ERROR_CONF_VALUE;
+    if (!strVal.empty() && strVal != "") {
+        iVal = Tools::StringToInt(strVal);
+    }
+    return iVal;
+}
