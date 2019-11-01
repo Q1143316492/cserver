@@ -1,12 +1,19 @@
 #ifndef _CSERVER_CORE_H_
 #define _CSERVER_CORE_H_
 
-#include "cserver_socket.h"
+class CSocket;
 
-typedef struct CServer {
+class CServer {
+public:
     CSocket *csocket;
+    bool  stop;
     pid_t pid;
     pid_t ppid;
-} CServer;
+};
+
+typedef struct Connection {
+    int fd;
+    int port;
+} Connection;
 
 #endif

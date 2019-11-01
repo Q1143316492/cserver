@@ -11,6 +11,8 @@
 
 // 配置文件配置项
 #define CHILD_PROCESS_NUMBER    "process_num"
+#define EPOLL_CONNECT_LIMIT     "connection_limit"
+
 
 // 日志
 

@@ -10,6 +10,8 @@
 
 #include "cserver_macro.h"
 #include "cserver_global.h"
+#include "cserver_socket.h"
+#include "cserver_core.h"
 
 int init_deamon();
 

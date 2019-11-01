@@ -4,6 +4,7 @@
 #include "cserver_global.h"
 #include "cserver_memery.h"
 #include "cserver_proc.h"
+#include "cserver_core.h"
 
 static void moveArgv()
 {
@@ -98,9 +99,9 @@ int main(int argc, char *const *argv)
             CORE_ERR_LOG("server init fail");
             break;
         }
-        g_cserver->pid = getpid();
+        g_cserver->pid  = getpid();
         g_cserver->ppid = getppid();
-
+        g_cserver->stop = false;
         mainWorkProcessLoops();
 
     } while (false);

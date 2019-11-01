@@ -29,11 +29,21 @@ void mainWorkProcessLoops()
 
 void fatherWorkProcessLoops()
 {
-    sleep(60);
+    sleep(10);
     // while (true) ;
 }
 
 void childWorkProcessLoops()
 {
-    
+    g_cserver->csocket = new CSocket();
+    do {
+        int ret = g_cserver->csocket->init_server();
+        if (ret == false) {
+            CORE_ERR_LOG("socket init fail");
+            break;
+        }
+
+    } while (false);
+    delete g_cserver->csocket;
+    delete g_cserver;
 }
